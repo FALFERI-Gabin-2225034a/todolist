@@ -1,0 +1,114 @@
+#to-do-list {
+    width: 40vw;
+
+    .todo-input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid #ddd;
+        border-radius: 20px;
+        box-sizing: border-box;
+
+        input {
+            border: none;
+            width: 70vw;
+            background: none;
+        }
+        input:focus, button:focus {
+            outline: none; /* Supprime le contour */
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    button {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    .direction {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .direction button {
+        padding: 0.1em;
+    }
+
+    .icons {
+        padding: 0.5em;
+    }
+
+    .icons img {
+        width: 20px;
+
+    }
+
+    .list-icons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+
+    .head-task {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .task {
+        width: 40vw;
+    }
+
+    .task-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5em;
+        border-bottom: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+
+    .data-task {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .date {
+        color: #888;
+        font-style: italic;
+        font-size: small;
+    }
+
+    @media screen and (max-width: 900px) {
+        .data-task {
+            font-size: small;
+        }
+
+        .date {
+            font-size: x-small;
+        }
+
+        .task {
+            width: 80vw;
+        }
+
+        .icons img {
+            width: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #to-do-list {
+        width: 80vw;
+    }
+}
