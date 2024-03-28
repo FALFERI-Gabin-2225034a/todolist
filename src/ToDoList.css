@@ -67,6 +67,11 @@
         width: 40vw;
     }
 
+    .task-completed span {
+        text-decoration: line-through;
+        color: #888888;
+    }
+
     .task-content {
         display: flex;
         justify-content: space-between;

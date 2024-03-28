@@ -39,7 +39,7 @@ function Task(props) {
     const [calendarDate, setCalendarDate] = useState(new Date());
 
     return (
-        <li className="task">
+        <li className={props.task.completed ? "task task-completed" : "task"}>
             <div className="task-content">
                 <div className="head-task">
                     <div className="direction">
