@@ -2,8 +2,6 @@ import './ToDoList.css'
 import Task from "./Task.jsx";
 import ToDoInput from "./ToDoInput.jsx";
 import {useEffect, useState} from "react";
-import Calendar from "react-calendar";
-import {isDefaultPropsDeclaration} from "eslint-plugin-react/lib/util/props.js";
 
 function ToDoList() {
     // Récupération des tâches depuis le stockage local lors du chargement initial
@@ -31,7 +29,7 @@ function ToDoList() {
         const inputElement = document.getElementById(idInput);
 
         if (!inputElement) {
-            console.error(`Element with id '${idInput}' not found`);
+            console.error(`L'élément avec l'id '${idInput}' est introuvable !`);
             return;
         }
 

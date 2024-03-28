@@ -1,7 +1,9 @@
+import * as React from 'react';
 import ButtonIcon from "./ButtonIcon.jsx";
 import {useState} from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
+import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 
 function Task(props) {
     // Permet de modifier une tâche
@@ -25,7 +27,16 @@ function Task(props) {
         objNameTask = <input type="text" value={props.task.name} onChange={(e) => props.editTask(props.task.id, e.target.value)} onBlur={edit} onKeyDown={edit} autoFocus />;
     }
 
-    const [value, onChange] = useState(new Date());
+    // Permet d'ouvrir le calendrier
+    const [anchor, setAnchor] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchor(anchor ? null : event.currentTarget);
+        setCanOpenCalendar(!canOpenCalendar);
+    };
+
+    const open = Boolean(anchor);
+    const [calendarDate, setCalendarDate] = useState(new Date());
 
     return (
         <li className="task">
@@ -39,15 +50,21 @@ function Task(props) {
                 </div>
                 <div className="data-task">
                     {objNameTask}
-                    <span className="date">{value.getDate()}/{value.getMonth()}/{value.getFullYear()}</span>
+                    <span className="date">{calendarDate.getDate()}/{calendarDate.getMonth()}/{calendarDate.getFullYear()}</span>
                 </div>
                 <div className="list-icons">
-                    <ButtonIcon onClick={() => setCanOpenCalendar(!canOpenCalendar)}>calendar</ButtonIcon>
+                    <ButtonIcon onClick={handleClick}>calendar</ButtonIcon>
                     <ButtonIcon onClick={edit}>edit</ButtonIcon>
                     <ButtonIcon onClick={() => props.deleteTask(props.task.id)}>delete</ButtonIcon>
                 </div>
             </div>
-            {canOpenCalendar ? <Calendar className="calendar" onChange={onChange} value={value}/> : null}
+            {/*canOpenCalendar ? <Calendar className="calendar" onChange={onChange} value={value}/> : null*/}
+            <BasePopup
+                open={open}
+                anchor={anchor}
+                disablePortal>
+                <Calendar className="calendar" onClickDay={handleClick} onChange={setCalendarDate} value={calendarDate} />
+            </BasePopup>
         </li>
     );
 }

@@ -89,6 +89,10 @@
     }
 
     @media screen and (max-width: 900px) {
+        .calendar {
+            width: 70vw;
+        }
+
         .data-task {
             font-size: small;
         }
